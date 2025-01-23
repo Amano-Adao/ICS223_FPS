@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Ball ball;
+    //[SerializeField] private Ball ball;
     private int scoreP1;
     private int scoreP2;
 
