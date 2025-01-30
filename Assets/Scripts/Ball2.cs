@@ -7,18 +7,14 @@ public class Ball2 : MonoBehaviour
 
     float speed = 7f;
 
-    float maxX = 13;
-    float minx = -13;
-
-    int scoreP1 = 0;
-    int scoreP2 = 0;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Launch();
+        //Launch();
     }
 
-    void Launch()
+    public void Launch(Vector3 direction)
     {
         Vector3 movement = GetRandomBallDirection() * speed;
         rb.AddForce(movement, ForceMode.Impulse);
@@ -26,33 +22,25 @@ public class Ball2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x > maxX)
-        {
-            scoreP1++;
-            Reset();
-        }
-        else if(transform.position.x < minx)
-        {
-            scoreP2++;
-            Reset();
-        }
+        
     }
 
-    private void Reset()
+    public void Reset()
     {
         rb.linearVelocity = Vector3.zero;
         transform.position = Vector3.zero;
-        Launch();
+        Launch(GetRandomBallDirection());
     }
+
     Vector3 GetRandomBallDirection()
     {
         float x = 1;
         float y = 1;
-        if(Random.Range(0, 2) == 0)
+        if (Random.Range(0, 2) == 0)
         {
             x = -1f;
         }
-        if(Random.Range(0, 2) == 0)
+        if (Random.Range(0, 2) == 0)
         {
             y = -1f;
         }
