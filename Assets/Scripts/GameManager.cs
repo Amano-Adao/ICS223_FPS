@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
 
     int scoreP1 = 0;
     int scoreP2 = 0;
-    private string vertInputAxix = "VerticalP1";
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,15 +26,31 @@ public class GameManager : MonoBehaviour
             scoreP1++;
             ui.UpdateScore(scoreP1, scoreP2);
             ball.Reset();
+            ball.Launch(GetRandomBallDirection());
         }
         else if (ball.transform.position.x < minx)
         {
             scoreP2++;
             ui.UpdateScore(scoreP1, scoreP2);
             ball.Reset();
+            ball.Launch(GetRandomBallDirection());
         }
     }
 
+    Vector3 GetRandomBallDirection()
+    {
+        float x = 1;
+        float y = 1;
+        if (Random.Range(0, 2) == 0)
+        {
+            x = -1f;
+        }
+        if (Random.Range(0, 2) == 0)
+        {
+            y = -1f;
+        }
+        Vector3 dir = new Vector3(x, y, 0);
+        return dir;
+    }
 
-    
 }
