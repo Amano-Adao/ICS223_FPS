@@ -11,7 +11,8 @@ public class SceneController : MonoBehaviour
     private const int numEnemies = 3;
     private GameObject[] enemies;
 
-
+    [SerializeField] WanderingIguana iguana;
+    private GameObject[] iguanas;
     private void Start()
     {
         //enemyPrefab = GetComponent<GameObject>();
