@@ -11,14 +11,18 @@ public class SceneController : MonoBehaviour
     private const int numEnemies = 3;
     private GameObject[] enemies;
 
-    [SerializeField] WanderingIguana iguana;
+    private const int numIguanas = 5;
+    [SerializeField] GameObject iguana;
     private GameObject[] iguanas;
+    private GameObject iguanaObj;
+    [SerializeField] private Transform iguanaSpawnPt;
     private void Start()
     {
         //enemyPrefab = GetComponent<GameObject>();
         //enemy = Instantiate(enemyPrefab as GameObject);
         enemies = new GameObject[numEnemies];
-        
+        iguanas = new GameObject[numIguanas];
+        spawnIguanas();
         //enemies = {enemyPrefab as GameObject, enemyPrefab as GameObject, enemyPrefab as GameObject};
     }
     // Update is called once per frame
@@ -38,5 +42,21 @@ public class SceneController : MonoBehaviour
             }
         }
         
+    }
+
+    void spawnIguanas()
+    {
+        for (int i = 0; i < numIguanas; i++)
+        {
+            //Debug.Log("enemies array at:" + i + " is "+ enemies[i] == null);
+            if (iguanas[i] == null)
+            {
+                iguanaObj = Instantiate(iguana as GameObject);
+                iguanaObj.transform.position = iguanaSpawnPt.position;
+                float angle = Random.Range(0, 360);
+                iguanaObj.transform.Rotate(0, angle, 0);
+                iguanas[i] = iguanaObj;
+            }
+        }
     }
 }

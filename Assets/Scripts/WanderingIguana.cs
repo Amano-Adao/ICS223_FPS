@@ -39,7 +39,7 @@ public class WanderingIguana : MonoBehaviour
         }
         
     }
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Vector3 rangeTest = transform.position + transform.forward * obstacleRange;
